@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  repository: highcanfly/whois-rest
+  tag: 0.9.0
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: chart-example.local
+      paths: []
+  tls: []
+
+env:
+  WHOIS_SERVER: whois.cymru.com
+  HTTP_PORT: "8080"

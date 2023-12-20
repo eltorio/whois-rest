@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "whois-rest.fullname" . }}
+  labels:
+    {{- include "whois-rest.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "whois-rest.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "whois-rest.selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: WHOIS_SERVER
+              value: {{ .Values.env.WHOIS_SERVER }}
+            - name: HTTP_PORT
+              value: {{ .Values.env.HTTP_PORT }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP

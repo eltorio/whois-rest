@@ -17,3 +17,10 @@ go build -o main .
 
 ## Docker image
 `docker pull highcanfly/whois-rest`
+
+## Kubernetes
+```bash
+helm repo add highcanfly https://helm-repo.highcanfly.club/
+helm repo update
+helm upgrade --install --create-namespace --namespace whois-rest highcanfly/whois-rest
+```
