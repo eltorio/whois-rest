@@ -13,6 +13,7 @@ To build the service, run:
 
 ```bash
 go build -o main .
+```
 
 ## Docker image
 `docker pull highcanfly/whois-rest`
