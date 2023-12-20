@@ -20,9 +20,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: WHOIS_SERVER
-              value: {{ .Values.env.WHOIS_SERVER }}
+              value: {{ .Values.env.WHOIS_SERVER | quote }}
             - name: HTTP_PORT
-              value: {{ .Values.env.HTTP_PORT }}
+              value: {{ .Values.env.HTTP_PORT | quote }}
           ports:
             - name: http
               containerPort: 8080

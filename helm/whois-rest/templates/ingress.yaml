@@ -16,7 +16,7 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ include "whois-rest.fullname" }}
+                name: {{ include "whois-rest.fullname" . }}
                 port:
                   number: 80
           {{- end }}
